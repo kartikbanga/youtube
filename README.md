@@ -1,6 +1,4 @@
-![Screenshot (198)](https://github.com/kartikbanga/youtube/assets/71484653/88982783-6726-49fd-9c29-d14c06726129)
-![Screenshot (197)](https://github.com/kartikbanga/youtube/assets/71484653/4dee46dc-ced0-4884-b081-1df95f8f4a9c)
-![Screenshot (201)](https://github.com/kartikbanga/youtube/assets/71484653/91a949b6-93f4-495a-a9b6-94125c19827a)
+
 # YouTube Clone Project
 
 Welcome to the GitHub repository for my YouTube Clone project! This project was created as a demonstration of my skills in web development and showcases the use of HTML5, CSS3, JavaScript, React, Material UI, and API integration.
