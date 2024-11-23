@@ -8,6 +8,7 @@ import { abbreviateNumber } from "js-abbreviation-number";
 import { fetchDataFromApi } from "../utils/api";
 import { Context } from "../context/contextApi";
 import SuggestionVideoCard from "./SuggestionVideoCard";
+import logo from "../images/avatar.jpg"
 
 const VideoDetails = () => {
     const [video, setVideo] = useState();
@@ -23,8 +24,8 @@ const VideoDetails = () => {
 
     const fetchVideoDetails = () => {
         setLoading(true);
-        fetchDataFromApi(`video/details/?id=${id}`).then((res) => {
-            console.log(res);
+        fetchDataFromApi(`video/info/?id=${id}`).then((res) => {
+            console.log("Video Details: " + res);
             setVideo(res);
             setLoading(false);
         });
@@ -32,12 +33,13 @@ const VideoDetails = () => {
 
     const fetchRelatedVideos = () => {
         setLoading(true);
-        fetchDataFromApi(`video/related-contents/?id=${id}`).then((res) => {
-            console.log(res);
+        fetchDataFromApi(`related/?id=${id}`).then((res) => {
+            console.log("Related Videos:" + res);
             setRelatedVideos(res);
             setLoading(false);
         });
     };
+    console.log("Test: "+JSON.stringify(video))
 
     return (
         <div className="flex justify-center flex-row h-[calc(100%-56px)] bg-black">
@@ -59,11 +61,12 @@ const VideoDetails = () => {
                     <div className="flex justify-between flex-col md:flex-row mt-4">
                         <div className="flex">
                             <div className="flex items-start">
-                                <div className="flex h-11 w-11 rounded-full overflow-hidden">
+                                <div className="flex h-16 w-16 rounded-full overflow-hidden">
                                     <img
                                         alt=""
                                         className="h-full w-full object-cover"
-                                        src={video?.author?.avatar[0]?.url}
+                                        // src={logo}
+                                        src={video?.author?.avatar?.[0]?.url || logo} 
                                     />
                                 </div>
                             </div>

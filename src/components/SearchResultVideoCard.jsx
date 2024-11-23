@@ -12,11 +12,11 @@ const SearchResultVideoCard = ({ video }) => {
                 <div className="relative flex shrink-0 h-48 md:h-28 lg:h-40 xl:h-48 w-full md:w-48 lg:w-64 xl:w-80 rounded-xl bg-slate-800 overflow-hidden">
                     <img
                         className="h-full w-full object-cover"
-                        src={video?.thumbnails[0]?.url}
+                        src={video?.thumbnail?.[0]?.url}
                         alt=""
                     />
-                    {video?.lengthSeconds && (
-                        <VideoLength time={video?.lengthSeconds} />
+                    {video?.lengthText && (
+                        <VideoLength time={video?.lengthText} />
                     )}
                 </div>
                 <div className="flex flex-col ml-4 md:ml-6 mt-4 md:mt-0 overflow-hidden">
@@ -24,7 +24,7 @@ const SearchResultVideoCard = ({ video }) => {
                         {video?.title}
                     </span>
                     <span className="empty:hidden text-sm line-clamp-1 md:line-clamp-2 text-white/[0.7] md:pr-24 md:my-4">
-                        {video?.descriptionSnippet}
+                        {video?.description}
                     </span>
                     <div className="hidden md:flex items-center">
                         <div className="flex items-start mr-3">
@@ -32,21 +32,20 @@ const SearchResultVideoCard = ({ video }) => {
                                 <img
                                     alt=""
                                     className="h-full w-full object-cover"
-                                    src={video?.author?.avatar[0]?.url}
+                                    src={video?.channelThumbnail?.[0]?.url}
                                 />
                             </div>
                         </div>
                         <div className="flex flex-col">
                             <span className="text-sm font-semibold mt-2 text-white/[0.7] flex items-center">
-                                {video?.author?.title}
-                                {video?.author?.badges[0]?.type ===
-                                    "VERIFIED_CHANNEL" && (
+                                {video?.channelTitle}
+                                {video?.badges?.[0] && (
                                     <BsFillCheckCircleFill className="text-white/[0.5] text-[12px] lg:text-[10px] xl:text-[12px] ml-1" />
                                 )}
                             </span>
                             <div className="flex text-sm font-semibold text-white/[0.7] truncate overflow-hidden">
                                 <span>{`${abbreviateNumber(
-                                    video?.stats?.views,
+                                    video?.viewCount,
                                     2
                                 )} views`}</span>
                                 <span className="flex text-[24px] leading-none font-bold text-white/[0.7] relative top-[-10px] mx-1">
