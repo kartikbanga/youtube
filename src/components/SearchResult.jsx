@@ -16,8 +16,7 @@ const SearchResult = () => {
         fetchSearchResults()
     }, [searchQuery]);
 
-    const test ={
-        "data": [
+    const data = [
           {
             "type": "video",
             "videoId": "12345",
@@ -32,14 +31,14 @@ const SearchResult = () => {
             "badges": ["Verified"]
           }
         ]
-      }
+      
       
 
     const fetchSearchResults = () => {
         setLoading(true);
         fetchDataFromApi(`search?query=${searchQuery}`).then((res) => {
-            console.log(res);
-            setResult(test);
+            console.log("------------------: " + JSON.stringify(res));
+            setResult(res?.data);
             setLoading(false);
         });
     };
@@ -50,12 +49,11 @@ const SearchResult = () => {
             <div className="grow w-[calc(100%-240px)] h-full overflow-y-auto bg-black">
                 <div className="grid grid-cols-1 gap-2 p-5">
                     {result?.map((item) => {
-                        if (item?.type === "video"){;
-                        let video = item;
+                        if (item?.type === "video"){
                         return (
                             <SearchResultVideoCard
                                 key={item.videoId}
-                                video={video}
+                                video={item}
                             />
                         );
                         }

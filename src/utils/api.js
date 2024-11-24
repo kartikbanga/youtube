@@ -30,8 +30,9 @@ export const fetchDataFromApi = async (url) => {
   options.url = `${BASE_URL}/${url}`
 
   try {
-    const response = await axios.request(options);
-    console.log(response.data);
+    const { data } = await axios.request(options);
+    return data
+    console.log(data);
   } catch (error) {
     console.error(error);
   }
