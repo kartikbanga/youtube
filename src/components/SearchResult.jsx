@@ -37,7 +37,6 @@ const SearchResult = () => {
     const fetchSearchResults = () => {
         setLoading(true);
         fetchDataFromApi(`search?query=${searchQuery}`).then((res) => {
-            console.log("------------------: " + JSON.stringify(res));
             setResult(res?.data);
             setLoading(false);
         });
