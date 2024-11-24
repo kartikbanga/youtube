@@ -16,11 +16,28 @@ const SearchResult = () => {
         fetchSearchResults()
     }, [searchQuery]);
 
+    const data = [
+          {
+            "type": "video",
+            "videoId": "12345",
+            "title": "Sample Video",
+            "thumbnail": [{ "url": "thumbnail_url.jpg" }],
+            "lengthText": "5:32",
+            "description": "Sample description",
+            "channelThumbnail": [{ "url": "channel_thumbnail_url.jpg" }],
+            "channelTitle": "Sample Channel",
+            "viewCount": 12345,
+            "publishedTimeText": "2 hours ago",
+            "badges": ["Verified"]
+          }
+        ]
+      
+      
+
     const fetchSearchResults = () => {
         setLoading(true);
-        fetchDataFromApi(`search/?q=${searchQuery}`).then((res) => {
-            console.log(res);
-            setResult(res?.contents);
+        fetchDataFromApi(`search?query=${searchQuery}`).then((res) => {
+            setResult(res?.data);
             setLoading(false);
         });
     };
@@ -31,14 +48,14 @@ const SearchResult = () => {
             <div className="grow w-[calc(100%-240px)] h-full overflow-y-auto bg-black">
                 <div className="grid grid-cols-1 gap-2 p-5">
                     {result?.map((item) => {
-                        if (item?.type !== "video") return false;
-                        let video = item.video;
+                        if (item?.type === "video"){
                         return (
                             <SearchResultVideoCard
-                                key={video.videoId}
-                                video={video}
+                                key={item.videoId}
+                                video={item}
                             />
                         );
+                        }
                     })}
                 </div>
             </div>
