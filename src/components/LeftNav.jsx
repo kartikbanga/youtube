@@ -59,9 +59,9 @@ const LeftNav = () => {
                 <hr className="my-5 border-white/[0.2]" />
                 <div className="text-white/[0.5] text-[14px]">
                 <div className="flex flex-row">
-                <a href="https://www.linkedin.com/in/kartikbanga04/" target="_blank" ><img className="h-8 w-8" src={linkedInLogo} /></a>
-                <a href="https://github.com/kartikbanga" target="_blank"><img className="h-8 w-8" src={githubLogo} /></a>
-                <a href="https://leetcode.com/u/_kartikbanga_/" target="_blank"><img className="h-8 w-8" src={leetcodeLogo} /></a>
+                <a href="https://www.linkedin.com/in/kartikbanga04/" target="_blank" rel="noreferrer"><img className="h-8 w-8" src={linkedInLogo} /></a>
+                <a href="https://github.com/kartikbanga" target="_blank" rel="noreferrer"><img className="h-8 w-8" src={githubLogo} /></a>
+                <a href="https://leetcode.com/u/_kartikbanga_/" target="_blank" rel="noreferrer"><img className="h-8 w-8" src={leetcodeLogo} /></a>
                 </div>
                 <br />
                     &copy; <a  target="_blank" >Kartik Banga</a>
