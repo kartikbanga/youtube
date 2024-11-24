@@ -6,7 +6,7 @@ const options = {
   method: "GET",
   url: "",
   headers: {
-    "x-rapidapi-key": process.env.REACT_APP_YOUTUBE_API_KEY,
+    "x-rapidapi-key": "2afac2fedfmshb5571a7c9e5e8d9p175a59jsncab613b3810a",
     "x-rapidapi-host": "yt-api.p.rapidapi.com",
   },
 };
