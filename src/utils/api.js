@@ -1,17 +1,3 @@
-// import axios from "axios";
-
-// const BASE_URL = "https://yt-api.p.rapidapi.com/search?query=car";
-
-// const options = {
-//   method: "GET",
-//   // url: 'https://youtube138.p.rapidapi.com/auto-complete/',
-//   // params: { hl: "en", gl: "US" },
-//   headers: {
-//     "x-rapidapi-key": process.env.REACT_APP_YOUTUBE_API_KEY,
-//     "x-rapidapi-host": "https://yt-api.p.rapidapi.com",
-//   },
-// };
-
 import axios from "axios";
 
 const BASE_URL = "https://yt-api.p.rapidapi.com";
@@ -27,16 +13,14 @@ const options = {
 };
 
 export const fetchDataFromApi = async (url) => {
-  options.url = `${BASE_URL}/${url}`
+  options.url = `${BASE_URL}/${url}`;
 
   try {
     const { data } = await axios.request(options);
-    return data
+    console.log("URL Called::::: " + options.url);
     console.log(data);
+    return data;
   } catch (error) {
     console.error(error);
   }
 };
-
-
-

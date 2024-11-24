@@ -27,7 +27,7 @@ const VideoCard = ({ video }) => {
                             <img
                                 alt=""
                                 className="h-full w-full object-cover"
-                                src={logo}
+                                src={video?.channelThumbnail?.[0]?.url || logo}
                             />
                         </div>
                     </div>

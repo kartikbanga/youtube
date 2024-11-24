@@ -24,8 +24,9 @@ const VideoDetails = () => {
 
     const fetchVideoDetails = () => {
         setLoading(true);
-        fetchDataFromApi(`video/info/?id=${id}`).then((res) => {
-            console.log("Video Details: " + res);
+        fetchDataFromApi(`video/info?id=${id}`).then((res) => {
+            console.log("Current Video::::::")
+            console.log(res)
             setVideo(res);
             setLoading(false);
         });
@@ -33,13 +34,13 @@ const VideoDetails = () => {
 
     const fetchRelatedVideos = () => {
         setLoading(true);
-        fetchDataFromApi(`related/?id=${id}`).then((res) => {
-            console.log("Related Videos:" + res);
-            setRelatedVideos(res);
+        fetchDataFromApi(`related?id=${id}`).then((res) => {
+            console.log("RELATED DATA:::")
+            console.log(res.data)
+            setRelatedVideos(res.data);
             setLoading(false);
         });
     };
-    console.log("Test: "+JSON.stringify(video))
 
     return (
         <div className="flex justify-center flex-row h-[calc(100%-56px)] bg-black">
@@ -66,15 +67,14 @@ const VideoDetails = () => {
                                         alt=""
                                         className="h-full w-full object-cover"
                                         // src={logo}
-                                        src={video?.author?.avatar?.[0]?.url || logo} 
+                                        src={video?.channelThumbnail?.[0]?.url || logo} 
                                     />
                                 </div>
                             </div>
                             <div className="flex flex-col ml-3">
                                 <div className="text-white text-md font-semibold flex items-center">
-                                    {video?.author?.title}
-                                    {video?.author?.badges[0]?.type ===
-                                        "VERIFIED_CHANNEL" && (
+                                    {video?.channelTitle}
+                                    {video?.badges?.[0] && (
                                         <BsFillCheckCircleFill className="text-white/[0.5] text-[12px] ml-1" />
                                     )}
                                 </div>
@@ -87,13 +87,13 @@ const VideoDetails = () => {
                             <div className="flex items-center justify-center h-11 px-6 rounded-3xl bg-white/[0.15]">
                                 <AiOutlineLike className="text-xl text-white mr-2" />
                                 {`${abbreviateNumber(
-                                    video?.stats?.views,
+                                    video?.storyboards?.[0]?.thumbsCount,
                                     2
                                 )} Likes`}
                             </div>
                             <div className="flex items-center justify-center h-11 px-6 rounded-3xl bg-white/[0.15] ml-4">
                                 {`${abbreviateNumber(
-                                    video?.stats?.views,
+                                    video?.viewCount,
                                     2
                                 )} Views`}
                             </div>
@@ -101,14 +101,15 @@ const VideoDetails = () => {
                     </div>
                 </div>
                 <div className="flex flex-col py-6 px-4 overflow-y-auto lg:w-[350px] xl:w-[400px]">
-                    {relatedVideos?.contents?.map((item, index) => {
-                        if (item?.type !== "video") return false;
-                        return (
-                            <SuggestionVideoCard
-                                key={index}
-                                video={item?.video}
-                            />
-                        );
+                    {relatedVideos?.map((item, index) => {
+                        if (item?.type === "video") {
+                            return (
+                                <SuggestionVideoCard
+                                    key={index}
+                                    video={item}
+                                />
+                            );
+                        }
                     })}
                 </div>
             </div>
