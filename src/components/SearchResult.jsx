@@ -56,6 +56,7 @@ const SearchResult = () => {
                             />
                         );
                         }
+                        return null;
                     })}
                 </div>
             </div>
