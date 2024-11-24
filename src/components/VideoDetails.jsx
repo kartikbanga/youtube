@@ -106,6 +106,7 @@ const VideoDetails = () => {
                                 />
                             );
                         }
+                        return null;
                     })}
                 </div>
             </div>
