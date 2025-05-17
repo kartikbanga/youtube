@@ -39,7 +39,7 @@ npm install
 npm start
 
 
-5. Open your web browser and go to `[https://youtube-clone04.netlify.app/](https://youtube-seven-brown.vercel.app/)` to see the project in action.
+5. Open your web browser and go to `https://youtube-seven-brown.vercel.app/` to see the project in action.
 
 ## Project Screenshots
 
