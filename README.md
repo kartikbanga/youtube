@@ -3,6 +3,10 @@
 
 Welcome to the GitHub repository for my YouTube Clone project! This project was created as a demonstration of my skills in web development and showcases the use of HTML5, CSS3, JavaScript, React, Material UI, and API integration.
 
+# Live Link
+
+Open your web browser and go to `https://youtube-seven-brown.vercel.app/` to see the project in action.
+
 ## Project Overview
 
 The YouTube Clone project is a responsive web application that mimics the core functionalities of the YouTube platform. It offers a user-friendly interface for browsing and watching videos, powered by React for dynamic interactions and Material UI for an aesthetically pleasing design. The project also integrates Rapid API to fetch real-time video data, ensuring users have access to the latest content.
@@ -39,7 +43,6 @@ npm install
 npm start
 
 
-5. Open your web browser and go to `https://youtube-seven-brown.vercel.app/` to see the project in action.
 
 ## Project Screenshots
 
